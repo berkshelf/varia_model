@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'buff-extensions', path: '~/code/buff-extensions'
-
 group :development do
   gem 'coolline'
 
