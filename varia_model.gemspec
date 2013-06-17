@@ -17,8 +17,9 @@ Gem::Specification.new do |spec|
   spec.version       = VariaModel::VERSION
   spec.required_ruby_version = ">= 1.9.1"
 
+  spec.add_dependency "json", ">= 1.7.7"
   spec.add_dependency "hashie", ">= 2.0.2"
-  spec.add_dependency "buff-extensions", "~> 0.1"
+  spec.add_dependency "buff-extensions", "~> 0.2"
 
   spec.add_development_dependency "buff-ruby_engine", "~> 0.1"
   spec.add_development_dependency "thor", "~> 0.18.0"
