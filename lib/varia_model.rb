@@ -254,9 +254,14 @@ module VariaModel
   #
   # @return [String]
   def to_json(options = {})
-    JSON.generate(_attributes_, options)
+    JSON.generate(to_hash, options)
   end
   alias_method :as_json, :to_json
+
+  # Convert the object to a hash.
+  def to_hash
+    _attributes_.inject({}) { |h, (k,v)| h[k] = eval_as_proc(v); h }
+  end
 
   protected
 
