@@ -214,7 +214,7 @@ module VariaModel
   #
   # @return [Object]
   def get_attribute(key)
-    _attributes_.dig(key.to_s)
+    eval_as_proc(_attributes_.dig(key.to_s))
   end
   alias_method :[], :get_attribute
 
@@ -268,6 +268,13 @@ module VariaModel
     end
 
   private
+    # Evaluate the given Object as a Proc. If it's a block,
+    # call it. Otherwise, leave it alone.
+    #
+    # @param [Object]
+    def eval_as_proc(obj)
+      obj.is_a?(Proc) ? obj.call : obj
+    end
 
     def carefree_assign(new_attrs = {})
       _attributes_.deep_merge!(new_attrs)
