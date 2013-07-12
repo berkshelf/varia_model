@@ -20,6 +20,6 @@ A mixin to provide objects with magic attribute reading and writing
 
 # Authors and Contributors
 
-* Jamie Winsor (<reset@riotgames.com>)
+* Jamie Winsor (<jamie@vialstudios.com>)
 
 Thank you to all of our [Contributors](https://github.com/RiotGames/buff-extensions/graphs/contributors), testers, and users.

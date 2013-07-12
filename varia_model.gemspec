@@ -3,7 +3,7 @@ require File.expand_path('../lib/varia_model/version', __FILE__)
 
 Gem::Specification.new do |spec|
   spec.authors       = ["Jamie Winsor"]
-  spec.email         = ["reset@riotgames.com"]
+  spec.email         = ["jamie@vialstudios.com"]
   spec.description   = %q{A mixin to provide objects with magic attribute reading and writing}
   spec.summary       = spec.description
   spec.homepage      = "https://github.com/RiotGames/varia_model"
