@@ -237,7 +237,7 @@ module VariaModel
   #
   # @return [self]
   def from_json(data)
-    mass_assign(JSON.load(data))
+    mass_assign(JSON.parse(data))
     self
   end
 
