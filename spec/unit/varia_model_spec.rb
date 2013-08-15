@@ -479,6 +479,14 @@ describe VariaModel do
       subject.brooke.winsor = ->{ "bacon".upcase }
       expect(subject.get_attribute("brooke.winsor")).to eql("BACON")
     end
+
+    it "returns the current value of the Proc each time" do
+      @magic = "ponies"
+      subject.brooke.winsor = -> { @magic }
+      expect(subject.get_attribute("brooke.winsor")).to eql("ponies")
+      @magic = "unicorns"
+      expect(subject.get_attribute("brooke.winsor")).to eql("unicorns")
+    end
   end
 
   describe "#[]" do
