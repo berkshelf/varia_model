@@ -273,12 +273,13 @@ module VariaModel
     end
 
   private
-    # Evaluate the given Object as a Proc. If it's a block,
-    # call it. Otherwise, leave it alone.
+
+    # Send #call to the given object if it responds to it. If it doesn't, just return the
+    # object.
     #
-    # @param [Object]
+    # @param [#call]
     def eval_as_proc(obj)
-      obj.is_a?(Proc) ? obj.call : obj
+      obj.respond_to?(:call) ? obj.call : obj
     end
 
     def carefree_assign(new_attrs = {})
