@@ -55,6 +55,12 @@ describe VariaModel do
 
         expect(subject.attributes.dig('attribute')).to eql('some value')
       end
+
+      it "allows an attribute that has a lambda default value" do
+        subject.attribute 'brooke', default: ->{ "winsor".upcase }
+
+        expect(subject.attributes.dig('brooke')).to be_a(Proc)
+      end
     end
 
     describe "::validations" do
@@ -468,6 +474,38 @@ describe VariaModel do
     it "returns nil if the dotted path matches no attributes" do
       expect(subject.get_attribute('brooke.costantini')).to be_nil
     end
+
+    it "returns the current value of the Proc" do
+      subject.brooke.winsor = ->{ "bacon".upcase }
+      expect(subject.get_attribute("brooke.winsor")).to eql("BACON")
+    end
+
+    it "returns the current value of the Proc each time" do
+      @magic = "ponies"
+      subject.brooke.winsor = -> { @magic }
+      expect(subject.get_attribute("brooke.winsor")).to eql("ponies")
+      @magic = "unicorns"
+      expect(subject.get_attribute("brooke.winsor")).to eql("unicorns")
+    end
+  end
+
+  describe "#[]" do
+    subject do
+      Class.new do
+        include VariaModel
+        attribute 'foo', default: ->{ String.new("Bacon").upcase }
+      end.new
+    end
+
+    it "returns the current value of the Proc" do
+      expect(subject['foo']).to eql("BACON")
+    end
+
+    it "returns the updated value of the Proc" do
+      subject['foo']
+      subject['foo'] = 'hello'
+      expect(subject['foo']).to eql('hello')
+    end
   end
 
   describe "#mass_assign" do
@@ -599,6 +637,13 @@ describe VariaModel do
       subject.nick = "leblanc"
 
       expect(subject.to_json).to eql(JSON.dump(first_name: "brooke", nick: "leblanc"))
+    end
+
+    it "includes the most recent value for any Procs" do
+      subject.first_name = ->{ "seth".capitalize }
+      subject.nick = ->{ "name".upcase }
+
+      expect(subject.to_json).to eql(JSON.dump(first_name: "Seth", nick: "NAME"))
     end
   end
 
