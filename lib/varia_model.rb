@@ -253,10 +253,14 @@ module VariaModel
   # @option options [Class, Symbol, String] :adapter
   #
   # @return [String]
-  def to_json(options = {})
-    JSON.generate(to_hash, options)
+  def to_json(*options)
+    as_json.to_json(*options)
   end
-  alias_method :as_json, :to_json
+
+  # @return [Hash]
+  def as_json(*)
+    to_hash.merge(JSON.create_id => self.class.name)
+  end
 
   # Convert the object to a hash.
   def to_hash

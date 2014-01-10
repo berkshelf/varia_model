@@ -623,20 +623,22 @@ describe VariaModel do
   end
 
   describe "#to_json" do
-    subject do
-      Class.new do
-        include VariaModel
+    class Playa
+      include VariaModel
 
-        attribute 'first_name', type: String
-        attribute 'nick', type: String
-      end.new
+      attribute 'first_name', type: String
+      attribute 'nick', type: String
+    end
+
+    subject do
+      Playa.new
     end
 
     it "returns a JSON string containin the serialized attributes" do
       subject.first_name = "brooke"
       subject.nick = "leblanc"
 
-      expect(subject.to_json).to eql(JSON.dump(first_name: "brooke", nick: "leblanc"))
+      expect(subject.to_json).to eql(JSON.dump(first_name: "brooke", nick: "leblanc", json_class: "Playa"))
     end
 
     it "includes the most recent value for any Procs" do
