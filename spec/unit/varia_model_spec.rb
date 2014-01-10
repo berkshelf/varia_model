@@ -645,7 +645,7 @@ describe VariaModel do
       subject.first_name = ->{ "seth".capitalize }
       subject.nick = ->{ "name".upcase }
 
-      expect(subject.to_json).to eql(JSON.dump(first_name: "Seth", nick: "NAME"))
+      expect(subject.to_json).to eql(JSON.dump(first_name: "Seth", nick: "NAME", json_class: "Playa"))
     end
   end
 
