@@ -259,7 +259,9 @@ module VariaModel
 
   # @return [Hash]
   def as_json(*)
-    to_hash.merge(JSON.create_id => self.class.name)
+    opts = {}
+    opts[JSON.create_id] = self.class.name if JSON.create_id
+    to_hash.merge(opts)
   end
 
   # Convert the object to a hash.

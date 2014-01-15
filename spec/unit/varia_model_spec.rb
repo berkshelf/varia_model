@@ -647,6 +647,24 @@ describe VariaModel do
 
       expect(subject.to_json).to eql(JSON.dump(first_name: "Seth", nick: "NAME", json_class: "Playa"))
     end
+
+    describe "when JSON.create_id is nil" do
+      before do
+        @_old_create_id = JSON.create_id
+        JSON.create_id = nil
+      end
+
+      after do
+        JSON.create_id = @_old_create_id
+      end
+
+      it "does not include a nil key" do
+        subject.first_name = "brooke"
+        subject.nick = "leblanc"
+
+        expect(subject.to_json).to eql(JSON.dump(first_name: "brooke", nick: "leblanc"))
+      end
+    end
   end
 
   describe "#to_hash" do
