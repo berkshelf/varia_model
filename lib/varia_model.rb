@@ -43,7 +43,7 @@ module VariaModel
 
     # @param [#to_s] name
     # @option options [Symbol, Array<Symbol>] :type
-    # @option options [Boolean] :required
+    # @option options [Buff::Boolean] :required
     # @option options [Object] :default
     # @option options [Proc] :coerce
     def attribute(name, options = {})
@@ -181,7 +181,7 @@ module VariaModel
     self.errors
   end
 
-  # @return [Boolean]
+  # @return [Buff::Boolean]
   def valid?
     validate.empty?
   end
@@ -249,7 +249,7 @@ module VariaModel
   end
   alias_method :to_hash, :_attributes_
 
-  # @option options [Boolean] :symbolize_keys
+  # @option options [Buff::Boolean] :symbolize_keys
   # @option options [Class, Symbol, String] :adapter
   #
   # @return [String]
