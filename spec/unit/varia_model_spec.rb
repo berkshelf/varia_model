@@ -135,14 +135,14 @@ describe VariaModel do
     end
 
     describe "::validate_kind_of" do
-      let(:types) { [ String, Boolean ] }
+      let(:types) { [ String, Buff::Boolean ] }
       let(:key) { 'nested.one' }
 
       subject do
         Class.new do
           include VariaModel
 
-          attribute 'nested.one', types: [String, Boolean]
+          attribute 'nested.one', types: [String, Buff::Boolean]
         end
       end
 
@@ -187,7 +187,7 @@ describe VariaModel do
           Class.new do
             include VariaModel
 
-            attribute 'nested.one', types: [String, Boolean]
+            attribute 'nested.one', types: [String, Buff::Boolean]
           end
         end
 
