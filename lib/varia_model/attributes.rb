@@ -1,5 +1,4 @@
 require 'hashie'
-require 'hashie/hash_extensions'
 require 'hashie/mash'
 
 module VariaModel
