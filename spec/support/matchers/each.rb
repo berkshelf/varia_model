@@ -6,7 +6,7 @@ RSpec::Matchers.define :each do |check|
     end
   end
 
-  failure_message_for_should do |actual|
-    "at[#{@object}] #{check.failure_message_for_should}"
+  failure_message do |actual|
+    "at[#{@object}] #{check.failure_message}"
   end
 end
