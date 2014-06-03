@@ -23,19 +23,19 @@ describe VariaModel do
         subject.attribute 'jamie.winsor'
         subject.attribute 'brooke.winsor'
 
-        expect(subject.attributes).to have(2).items
+        expect(subject.attributes.size).to eq(2)
       end
 
       it "adds a validation if :required option is true" do
         subject.attribute 'brooke.winsor', required: true
 
-        expect(subject.validations).to have(1).item
+        expect(subject.validations.size).to eq(1)
       end
 
       it "adds a validation if the :type option is provided" do
         subject.attribute 'brooke.winsor', type: :string
 
-        expect(subject.validations).to have(1).item
+        expect(subject.validations.size).to eq(1)
       end
 
       it "sets a default value if :default option is provided" do
@@ -399,13 +399,13 @@ describe VariaModel do
       it "adds an error for each attribute that fails validations" do
         subject.validate
 
-        expect(subject.errors).to have(1).item
+        expect(subject.errors.size).to eq(1)
       end
 
       it "adds a message for each failed validation" do
         subject.validate
 
-        expect(subject.errors['brooke.winsor']).to have(1).item
+        expect(subject.errors['brooke.winsor'].size).to eq(1)
         expect(subject.errors['brooke.winsor'][0]).to eql("A value is required for attribute: 'brooke.winsor'")
       end
     end
@@ -428,8 +428,8 @@ describe VariaModel do
       it "adds an error if it fails validation" do
         subject.validate
 
-        expect(subject.errors).to have(1).item
-        expect(subject.errors['brooke.winsor']).to have(1).item
+        expect(subject.errors.size).to eq(1)
+        expect(subject.errors['brooke.winsor'].size).to eq(1)
         expect(subject.errors['brooke.winsor'][0]).to eql("Expected attribute: 'brooke.winsor' to be a type of: 'String', 'NilClass'")
       end
     end
