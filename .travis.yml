@@ -1,8 +1,16 @@
 language: ruby
-rvm:
-  - 2.0.0
-  - 2.1
-  - 2.2
+cache:
+  - bundler
+dist: trusty
+branches:
+  only:
+    - master
+before_install:
+  - gem update --system
+  - gem install bundler
 script: "bundle exec thor spec"
-sudo: false
-cache: bundler
+matrix:
+  include:
+  - rvm: 2.2.5
+  - rvm: 2.3.1
+  - rvm: ruby-head

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem "buff-extensions", github: "lamont-granquist/buff-extensions", branch: "lcg/update-travis"
 group :development do
   gem 'coolline'
 
