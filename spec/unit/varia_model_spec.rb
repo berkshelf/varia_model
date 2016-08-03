@@ -41,25 +41,25 @@ describe VariaModel do
       it "sets a default value if :default option is provided" do
         subject.attribute 'brooke.winsor', default: 'rhode island'
 
-        expect(subject.attributes.dig('brooke.winsor')).to eql('rhode island')
+        expect(subject.attributes.berks_dig('brooke.winsor')).to eql('rhode island')
       end
 
       it "allows an attribute called 'attributes'" do
         subject.attribute 'attributes', default: 'bag of junk'
 
-        expect(subject.attributes.dig('attributes')).to eql('bag of junk')
+        expect(subject.attributes.berks_dig('attributes')).to eql('bag of junk')
       end
 
       it "allows an attribute called 'attribute'" do
         subject.attribute 'attribute', default: 'some value'
 
-        expect(subject.attributes.dig('attribute')).to eql('some value')
+        expect(subject.attributes.berks_dig('attribute')).to eql('some value')
       end
 
       it "allows an attribute that has a lambda default value" do
         subject.attribute 'brooke', default: ->{ "winsor".upcase }
 
-        expect(subject.attributes.dig('brooke')).to be_a(Proc)
+        expect(subject.attributes.berks_dig('brooke')).to be_a(Proc)
       end
     end
 

@@ -214,7 +214,7 @@ module VariaModel
   #
   # @return [Object]
   def get_attribute(key)
-    eval_as_proc(_attributes_.dig(key.to_s))
+    eval_as_proc(_attributes_.berks_dig(key.to_s))
   end
   alias_method :[], :get_attribute
 
@@ -294,7 +294,7 @@ module VariaModel
 
     def whitelist_assign(new_attrs = {})
       self.class.attributes.dotted_paths.each do |dotted_path|
-        value = new_attrs.dig(dotted_path)
+        value = new_attrs.berks_dig(dotted_path)
         next if value.nil?
 
         set_attribute(dotted_path, value)
