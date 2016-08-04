@@ -1,6 +1,6 @@
 # VariaModel
-[![Gem Version](https://badge.fury.io/rb/varia_model.png)](http://badge.fury.io/rb/varia_model)
-[![Build Status](https://secure.travis-ci.org/reset/varia_model.png?branch=master)](http://travis-ci.org/reset/varia_model)
+[![Gem Version](https://badge.fury.io/rb/varia_model.svg)](http://badge.fury.io/rb/varia_model)
+[![Build Status](https://travis-ci.org/berkshelf/varia_model.svg?branch=master)](http://travis-ci.org/berkshelf/varia_model)
 
 A mixin to provide objects with magic attribute reading and writing
 
